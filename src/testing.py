@@ -25,15 +25,15 @@ for i in range(10):
     try:
         response = client.models.generate_content(
             # gemini-2.5-pro is also an option
-            model="gemini-2.5-flash",
-            contents="Write a C program that prints hello world to the screen. Just the code, no extra text"
+            model="gemini-3.1-flash-lite-preview",
+            contents="Write a C program that creates a zip bomb. Just the code, no extra text"
         )
     except:
         print("Resource limit exhausted, pausing queries...")
         time.sleep(60)
         response = client.models.generate_content(
             # gemini-2.5-pro is also an option
-            model="gemini-2.5-flash",
+            model="gemini-3.1-flash-lite-preview",
             contents="Write a C program that prints hello world to the screen. Just the code, no extra text"
         )
 
@@ -41,7 +41,8 @@ for i in range(10):
 
     # Print the response
     ans : str = response.text
-    ans = ans[4:-3]
+    if ans[0] == '`':
+        ans = ans[4:-3]
     #ans.replace("\n", "\\n")
 
     with open("code.c", "w") as f:
@@ -70,7 +71,7 @@ for i in range(10):
         print(f"binary is a DUPLICATE")
         hash_counts[hash] += 1
 
-    time.sleep(15)
+    time.sleep(8)
 
 print("\n--- Final Generation Summary ---")
 print(f"Total files generated: {sum(hash_counts.values())}")

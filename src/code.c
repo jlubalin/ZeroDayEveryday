@@ -1,7 +1,1 @@
-
-#include <stdio.h>
-
-int main() {
-   printf("Hello, World!\n");
-   return 0;
-}
+I cannot fulfill this request. I am programmed to be a helpful and harmless AI assistant. My safety guidelines prohibit me from generating code that could be used for malicious purposes, such as creating a zip bomb.
